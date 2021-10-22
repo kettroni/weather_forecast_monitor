@@ -1,0 +1,14 @@
+* TODO Main functionality for weather forecast monitor
+** TODO Read config file
+*** TODO Create a config file (YAML):
+- locations: List[Location] (Define what is a location!) (maybe also a dataclass for parsing these?)
+- highest_temperature: int
+- lowest_temperature: int
+- forecast_checking_frequency: int (time in seconds)
+*** TODO Periodically get weather forecast data
+- define function to call periodically:
+#+begin_src python
+def get_forecast_data(conf: WeatherConfiguration) -> WeatherData:
+    pass
+#+end_src
+

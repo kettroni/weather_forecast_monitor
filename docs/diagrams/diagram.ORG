@@ -1,0 +1,2 @@
+* Diagrams
+These .drawio files can be used [[https://app.diagrams.net][here]].
