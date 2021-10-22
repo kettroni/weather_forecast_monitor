@@ -5,10 +5,34 @@
 - highest_temperature: int
 - lowest_temperature: int
 - forecast_checking_frequency: int (time in seconds)
-*** TODO Periodically get weather forecast data
-- define function to call periodically:
+** TODO Periodically get weather forecast data
+*** TODO Define the function to get forecast data:
 #+begin_src python
-def get_forecast_data(conf: WeatherConfiguration) -> WeatherData:
+def get_forecast_data(weather_configuration: WeatherConfiguration) -> List[WeatherData]:
     pass
 #+end_src
 
+*** TODO Define and the needed dataclasses:
+#+begin_src python
+@dataclass
+class WeatherConfiguration:
+    pass
+
+
+@dataclass
+class WeatherData:
+    pass
+#+end_src
+** TODO Check if any temperature limit is exceeded in the next five days
+#+begin_src python
+def check_data(weather_data: List[WeatherData]) -> List[WeatherData]):
+    pass
+#+end_src
+
+** TODO Store the result
+*** TODO Define the function that sends data (via API)
+#+begin_src python
+def save_data(weather_data: WeatherData) -> None:
+    pass
+#+end_src
+*** TODO Make the API
