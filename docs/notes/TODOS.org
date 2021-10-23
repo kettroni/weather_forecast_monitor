@@ -36,9 +36,8 @@ def send_data_to_API(weather_data: WeatherData) -> None:
     pass
 #+end_src
 * TODO Make the API
-** GET methods
-- GET /forecasts
-  returns:
+** TODO GET methods
+- GET /forecasts returns:
   #+begin_src javascript
   [
     <forecast_object_1>,
@@ -46,5 +45,22 @@ def send_data_to_API(weather_data: WeatherData) -> None:
     ...
   ]
   #+end_src
+** TODO POST methods
+- POST /forecast
+  - request:
+    #+begin_src javascript
+    {
+      forecasts: [
+        <forecast_object_1>,
+	<forecast_object_2>,
+	...
+      ]
+      
+    }
+    #+end_src
 
+  - response with appropriate status code.
+* TODO SQLite database
+** TODO Tables
+*** TODO Forecast table
 
