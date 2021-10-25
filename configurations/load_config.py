@@ -1,7 +1,4 @@
-"""
-This module loads configurations from YAML file.
-"""
-from config_classes import MonitorConfiguration
+from .config_classes import MonitorConfiguration
 import yaml
 import logging
 
@@ -9,7 +6,7 @@ import logging
 logger = logging.getLogger("__name__")
 
 
-def load_config(config_file_path: str = "config.yaml") -> MonitorConfiguration:
+def load_config(config_file_path: str = "./config.yaml") -> MonitorConfiguration:
     try:
         with open(config_file_path, "r") as yaml_file:
             configs = yaml.safe_load(yaml_file)
@@ -25,11 +22,9 @@ def load_config(config_file_path: str = "config.yaml") -> MonitorConfiguration:
             return final_config
 
     except IOError as io_error:
-        logger.error(f"Configuration file not found in '{config_file_path}'.")
+        logger.error(io_error)
         raise io_error
     except Exception as error:
         logger.error(error)
         raise error
 
-
-print(load_config())
