@@ -1,6 +1,6 @@
 * TODO Weather forecast monitor
-** TODO Read config file
-*** TODO Create a config file (YAML):
+** DONE Read config file
+*** DONE Create a config file (YAML):
 - locations: List[Location] (Define what is a location!) (maybe also a dataclass for parsing these?)
 - high_temp: int
 - low_temp: int
