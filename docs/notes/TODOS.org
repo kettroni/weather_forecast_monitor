@@ -2,9 +2,9 @@
 ** TODO Read config file
 *** TODO Create a config file (YAML):
 - locations: List[Location] (Define what is a location!) (maybe also a dataclass for parsing these?)
-- highest_temperature: int
-- lowest_temperature: int
-- forecast_checking_frequency: int (time in seconds)
+- high_temp: int
+- low_temp: int
+- checking_frequency: int (time in seconds)
 ** TODO Periodically get weather forecast data
 *** TODO Define the function to get forecast data:
 #+begin_src python
