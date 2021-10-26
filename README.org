@@ -1,2 +1,2 @@
 * Weather Forecast Monitor
-This application is done for the recruitment process for Cloudator.
+
