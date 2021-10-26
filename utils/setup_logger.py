@@ -4,26 +4,24 @@ from logging.handlers import TimedRotatingFileHandler
 
 def setup_logger(
     log_path: str = "./logs/monitor.log",
-    fh: bool = True,
+    msg_format: str = "[%(asctime)s][%(levelname)s] - %(message)s",
     ch: bool = True,
 ) -> logging.Logger:
 
-    # Setup basic logging formats
     logging.basicConfig(
-        format="[%(asctime)s] - %(message)s",
+        filename=log_path,
+        filemode="w",
+        format=msg_format,
         datefmt="%Y-%m-%d %H:%M:%S",
         level=logging.DEBUG,
     )
-    logger = logging.getLogger("")
-
-    # Add file handler
-    if fh:
-        file_handler = TimedRotatingFileHandler(filename=log_path, when="midnight")
-        logger.addHandler(file_handler)
+    logger = logging.getLogger(__name__)
 
     # Add console handler
     if ch:
         console_handler = logging.StreamHandler()
+        console_handler.setFormatter(logging.Formatter(msg_format))
         logger.addHandler(console_handler)
 
+    print(logger)
     return logger
