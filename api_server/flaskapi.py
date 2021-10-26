@@ -1,7 +1,7 @@
 """
 API server is started by running this file.
 """
-from flask import Flask, request, jsonify, Response
+from flask import Flask
 from database.database_utils import initialize_database
 
 

@@ -1,6 +1,6 @@
 from __main__ import api
 from controllers.forecast_controller import get_forecasts, insert_forecasts
-from flask import Response, request
+from flask import request
 from pydantic.error_wrappers import ValidationError
 from forecast import ForecastData
 
@@ -9,11 +9,11 @@ from forecast import ForecastData
 def get_all_forecasts():
     forecasts = get_forecasts()
 
-    return forecasts
+    return forecasts, 200
 
 
 @api.route("/forecasts", methods=["POST"])
-def post_forecast():
+def post_forecasts():
     req_json = request.get_json()
     try:
         forecasts = req_json["forecasts"]
