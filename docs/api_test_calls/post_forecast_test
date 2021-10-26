@@ -1,0 +1,24 @@
+# POST BAD REQUEST 400
+POST http://127.0.0.1:5000/forecasts
+Content-Type: application/json
+
+{
+	"name": "test_wrong_json_req"
+}
+
+# POST CREATED 201
+POST http://127.0.0.1:5000/forecasts
+Content-Type: application/json
+
+{
+	"forecasts": [
+			{
+				"lon": 1.1,
+			       	"lat": 2.1,
+			       	"high_temp": 10,
+		  	     	"low_temp": -3,
+		        	"exceeds_limits": true,
+				"timestamp": ""
+		     	}
+		     ]
+}
