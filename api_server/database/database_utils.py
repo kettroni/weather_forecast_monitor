@@ -2,7 +2,7 @@ import sqlite3
 from sqlite3 import Connection
 
 
-def initialize_database(db_filepath: str = "./database/forecastsqlite.db") -> None:
+def initialize_database(db_filepath: str = "./database/forecast_sqlite3.db") -> None:
     """
     Initializes database with required tables.
     """
