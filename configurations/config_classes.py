@@ -14,6 +14,6 @@ class Location:
 @dataclass(frozen=True)
 class MonitorConfiguration:
     locations: List[Location]
-    high_temp: int
-    low_temp: int
+    high_temp: float
+    low_temp: float
     checking_frequency: int

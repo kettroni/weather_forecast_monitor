@@ -2,8 +2,8 @@
 ** DONE Read config file
 *** DONE Create a config file (YAML):
 - locations: List[Location] (Define what is a location!) (maybe also a dataclass for parsing these?)
-- high_temp: int
-- low_temp: int
+- high_temp: float
+- low_temp: float
 - checking_frequency: int (time in seconds)
 ** TODO Periodically get weather forecast data
 *** TODO Define the function to get forecast data:
