@@ -1,5 +1,5 @@
 from flask import json
-from forecast import ForecastData
+from models.forecastdata import ForecastData
 from typing import List, Dict
 from sqlite3 import Connection, Error
 from utils.database_utils import get_cnxn, execute_query

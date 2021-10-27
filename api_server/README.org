@@ -1,31 +1,48 @@
-* API server for storing forecast data
-** Usage
-Start the API server:
-#+begin_src shell
-python flaskapi.py
-#+end_src
+* Table of contents
+:PROPERTIES:
+:TOC:      :include all :depth 2 :ignore (this)
+:END:
+:CONTENTS:
+- [[#installation-guide][Installation guide]]
+  - [[#requirements][Requirements]]
+  - [[#1-create-a-virtual-environment-venv-named-venv-with-python][1. Create a virtual environment (venv) named ".venv" with python]]
+  - [[#2-activate-the-virtual-environment][2. Activate the virtual environment]]
+  - [[#3-install-the-dependencies-with-pip-and-requirementstxt][3. Install the dependencies with pip and requirements.txt]]
+- [[#usage][Usage]]
+- [[#http-methods-and-routes][HTTP methods and routes]]
+  - [[#get-forecasts][GET /forecasts]]
+  - [[#post-forecasts][POST /forecasts]]
+- [[#example-requests][Example requests]]
+- [[#folder-structure][Folder structure]]
+  - [[#api_server][api_server/]]
+  - [[#controllers][controllers/]]
+  - [[#database][database/]]
+  - [[#models][models/]]
+  - [[#routes][routes/]]
+  - [[#utils][utils/]]
+:END:
 
+* Installation guide
+
+*Disclaimer: this installation is tested with Linux, steps might be different for different distributions.*
 ** Requirements
 - Python 3.7.5 (might work with other versions too, this one is tested)
-  
-** Installation guide
-This guide assumes that:
+
+This also guide assumes that:
 - you have opened a shell within this folder,
 - your Python installation is called "python".
 
-*Disclaimer: this installation is tested with Linux, steps might be different for different distributions.*
-
-*** 1. Create a virtual environment (venv) named ".venv" with python
+** 1. Create a virtual environment (venv) named ".venv" with python
 #+begin_src shell
 python -m venv .venv
 #+end_src
 
-*** 2. Activate the virtual environment
+** 2. Activate the virtual environment
 #+begin_src shell
 source .venv/bin/activate
 #+end_src
 
-*** 3. Install the dependencies with pip and requirements.txt
+** 3. Install the dependencies with pip and requirements.txt
 Now you can easily get all the needed libraries for your python virtual environment:
 #+begin_src shell
 pip install -r requirements.txt
@@ -33,3 +50,52 @@ pip install -r requirements.txt
 
 Now you have succesfully installed the API's requirements for your virtual envrionment!
 Make sure you have activated your virtual environment before starting up the server!
+
+* Usage
+Start the API server:
+#+begin_src shell
+python flaskapi.py
+#+end_src
+
+* HTTP methods and routes
+** GET /forecasts
+Returns a list of all forecast data saved in the database.
+
+** POST /forecasts
+Given a list of forecast data, it inserts each of them into the database.
+Will return bad request 400 if any of the given data is invalid and won't
+update the database.
+
+* Example requests
+A few example requests are found in [[../docs/api_test_calls][here]].
+
+* Folder structure
+** api_server/
+Root folder for API.
+Includes:
+- [[./flaskapi.py][flaskapi.py]]
+  Main function for running the server.
+  Uses the [[https://flask.palletsprojects.com/en/2.0.x/][Flask library]] as a foundation.
+- [[./config.yaml][config.yaml]]
+  Configurable settings using [[https://en.wikipedia.org/wiki/YAML][YAML format]].
+** controllers/
+Functions that interact with the database and are called from the [[./routes][routes]].
+
+** database/
+Simply a folder to hold a sqlite database file.
+The database file is created here by default if
+using basic configurations [[./config.yaml][config.yaml]].
+The file itself is not overwritten, if there already
+is a database.
+** models/
+Includes data models which use [[https://pydantic-docs.helpmanual.io/usage/dataclasses/][pydantic dataclasses]].
+Using these models for data improves type error handling.
+** routes/
+Functions decorated with @api.route. Flask passes
+HTTP requests to these functions and calls them
+when accessed. Every function returns a message
+and a status code.
+** utils/
+Miscellaneous code that are utilized in different parts
+of the project. Probably should be refactored in the future.
+
