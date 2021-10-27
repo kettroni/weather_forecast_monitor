@@ -1,11 +1,3 @@
-# POST BAD REQUEST 400
-POST http://127.0.0.1:5000/forecasts
-Content-Type: application/json
-
-{
-	"name": "test_wrong_json_req"
-}
-
 # POST CREATED 201
 POST http://127.0.0.1:5000/forecasts
 Content-Type: application/json
