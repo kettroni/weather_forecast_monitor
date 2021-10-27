@@ -10,7 +10,7 @@ Content-Type: application/json
 			       	"high_temp": 10,
 		  	     	"low_temp": -3,
 		        	"exceeds_limits": true,
-				"timestamp": ""
+				"timestamp": "current_time"
 		     	}
 		     ]
 }

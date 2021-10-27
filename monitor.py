@@ -1,4 +1,4 @@
-from configurations.load_config import load_config
+from configurations.load_config import load_monitor_config
 from utils.setup_logger import setup_logger
 
 
@@ -8,7 +8,7 @@ def main():
 
     # Load configurations
     logger.info("Loading configurations...")
-    config = load_config()
+    config = load_monitor_config()
     logger.info(f"Found configurations: {config}.")
 
 

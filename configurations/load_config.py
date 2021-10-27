@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger("__name__")
 
 
-def load_config(config_file_path: str = "./config.yaml") -> MonitorConfiguration:
+def load_monitor_config(config_file_path: str = "./config.yaml") -> MonitorConfiguration:
     try:
         with open(config_file_path, "r") as yaml_file:
             configs = yaml.safe_load(yaml_file)

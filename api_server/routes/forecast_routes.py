@@ -1,4 +1,4 @@
-from __main__ import api
+from __main__ import api, API_CONFIG
 from controllers.forecast_controller import get_forecasts, insert_forecasts
 from flask import request
 from pydantic.error_wrappers import ValidationError
@@ -7,7 +7,7 @@ from forecast import ForecastData
 
 @api.route("/forecasts", methods=["GET"])
 def get_all_forecasts():
-    forecasts = get_forecasts()
+    forecasts = get_forecasts(API_CONFIG["DB_FILEPATH"])
 
     return forecasts, 200
 
@@ -19,7 +19,7 @@ def post_forecasts():
         forecasts = req_json["forecasts"]
         casted_forecasts = [ForecastData(**forecast) for forecast in forecasts]
         
-        insert_forecasts(casted_forecasts)
+        insert_forecasts(API_CONFIG["DB_FILEPATH"], casted_forecasts)
         return "Created forecast succesfully.", 201
     except TypeError as e:
         return str(e), 400
