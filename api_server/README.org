@@ -20,6 +20,7 @@
   - [[#models][models/]]
   - [[#routes][routes/]]
   - [[#utils][utils/]]
+- [[#improvements-nice-to-have][Improvements (nice to have)]]
 :END:
 
 * Installation guide
@@ -98,4 +99,6 @@ and a status code.
 ** [[./utils][utils/]]
 Miscellaneous code that are utilized in different parts
 of the project. Probably should be refactored in the future.
-
+* Improvements (nice to have)
+- Add server logging into log files and more logging in general.
+- Change type for timestamp field in [[./models/forecastdata.py][forecastdataclass.py]] (currently just a string).
