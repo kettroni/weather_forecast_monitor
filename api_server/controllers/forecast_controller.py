@@ -34,7 +34,7 @@ def insert_into_forecast_table(cnxn: Connection, forecast_data_row: ForecastData
         forecast_data_row.high_temp,
         forecast_data_row.low_temp,
         forecast_data_row.exceeds_limits,
-        forecast_data_row.timestamp
+        forecast_data_row.timestamp,
     ]
 
     execute_query(cnxn, query, query_params)

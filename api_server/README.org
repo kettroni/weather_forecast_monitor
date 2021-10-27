@@ -1,0 +1,29 @@
+* API server for storing forecast data
+** Requirements
+- Python 3.7.5 (might work with other versions too, this one is tested)
+  
+** Installation guide
+This guide assumes that:
+- you have opened a shell within this folder,
+- your Python installation is called "python".
+
+Disclaimer: this installation is tested with Linux, steps might be different for different distributions.
+
+*** 1. Create a virtual environment (venv) named ".venv" with python
+#+begin_src shell
+.../api_server$ python -m venv .venv
+#+end_src
+
+*** 2. Activate the virtual environment
+#+begin_src shell
+.../api_server$ source .venv/bin/activate
+#+end_src
+
+*** 3. Install the dependencies with pip and requirements.txt
+Now you can easily get all the needed libraries for your python virtual environment:
+#+begin_src shell
+(.venv) .../api_server$ pip install -r requirements.txt
+#+end_src
+
+Now you have succesfully installed the API!
+

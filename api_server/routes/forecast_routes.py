@@ -18,7 +18,7 @@ def post_forecasts():
     try:
         forecasts = req_json["forecasts"]
         casted_forecasts = [ForecastData(**forecast) for forecast in forecasts]
-        
+
         insert_forecasts(API_CONFIG["DB_FILEPATH"], casted_forecasts)
         return "Created forecast succesfully.", 201
     except TypeError as e:
