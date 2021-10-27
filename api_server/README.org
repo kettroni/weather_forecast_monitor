@@ -70,7 +70,7 @@ update the database.
 A few example requests are found in [[../docs/api_test_calls][here]].
 
 * Folder structure
-** api_server/
+** [[./][api_server/]]
 Root folder for API.
 Includes:
 - [[./flaskapi.py][flaskapi.py]]
@@ -78,24 +78,24 @@ Includes:
   Uses the [[https://flask.palletsprojects.com/en/2.0.x/][Flask library]] as a foundation.
 - [[./config.yaml][config.yaml]]
   Configurable settings using [[https://en.wikipedia.org/wiki/YAML][YAML format]].
-** controllers/
+** [[./controllers][controllers/]]
 Functions that interact with the database and are called from the [[./routes][routes]].
 
-** database/
+** [[./database][database/]]
 Simply a folder to hold a sqlite database file.
 The database file is created here by default if
 using basic configurations [[./config.yaml][config.yaml]].
 The file itself is not overwritten, if there already
 is a database.
-** models/
+** [[./models][models/]]
 Includes data models which use [[https://pydantic-docs.helpmanual.io/usage/dataclasses/][pydantic dataclasses]].
 Using these models for data improves type error handling.
-** routes/
+** [[./routes][routes/]]
 Functions decorated with @api.route. Flask passes
 HTTP requests to these functions and calls them
 when accessed. Every function returns a message
 and a status code.
-** utils/
+** [[./utils][utils/]]
 Miscellaneous code that are utilized in different parts
 of the project. Probably should be refactored in the future.
 
