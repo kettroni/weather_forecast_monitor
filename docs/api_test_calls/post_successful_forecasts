@@ -11,6 +11,15 @@ Content-Type: application/json
 		  	     	"low_temp": -3,
 		        	"exceeds_limits": true,
 				"timestamp": "current_time"
+		     	},
+			{
+				"lon": 1.2,
+			       	"lat": 2.2,
+			       	"high_temp": 10,
+		  	     	"low_temp": -3,
+		        	"exceeds_limits": true,
+				"timestamp": "current_time"
 		     	}
+			
 		     ]
 }

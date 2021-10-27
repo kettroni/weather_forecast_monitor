@@ -1,7 +1,33 @@
-# POST BAD REQUEST 400
+# POST BAD REQUEST 400, no key "forecasts" found
 POST http://127.0.0.1:5000/forecasts
 Content-Type: application/json
 
 {
 	"name": "test_wrong_json_req"
+}
+
+# POST BAD REQUEST 400, the first object lat is wrong type.
+POST http://127.0.0.1:5000/forecasts
+Content-Type: application/json
+
+{
+	"forecasts": [
+			{
+				"lon": 1.1,
+			       	"lat": "str",
+			       	"high_temp": 10,
+		  	     	"low_temp": -3,
+		        	"exceeds_limits": true,
+				"timestamp": "current_time"
+		     	},
+			{
+				"lon": 1.2,
+			       	"lat": 2.2,
+			       	"high_temp": 10,
+		  	     	"low_temp": -3,
+		        	"exceeds_limits": true,
+				"timestamp": "current_time"
+		     	}
+			
+		     ]
 }
