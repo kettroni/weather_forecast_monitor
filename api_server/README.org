@@ -7,19 +7,19 @@ This guide assumes that:
 - you have opened a shell within this folder,
 - your Python installation is called "python".
 
-Disclaimer: this installation is tested with Linux, steps might be different for different distributions.
+*Disclaimer: this installation is tested with Linux, steps might be different for different distributions.*
 
-*** 1. Create a virtual environment (venv) named ".venv" with python
+- 1. Create a virtual environment (venv) named ".venv" with python
 #+begin_src shell
 python -m venv .venv
 #+end_src
 
-*** 2. Activate the virtual environment
+- 2. Activate the virtual environment
 #+begin_src shell
 source .venv/bin/activate
 #+end_src
 
-*** 3. Install the dependencies with pip and requirements.txt
+- 3. Install the dependencies with pip and requirements.txt
 Now you can easily get all the needed libraries for your python virtual environment:
 #+begin_src shell
 pip install -r requirements.txt
