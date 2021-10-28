@@ -3,6 +3,10 @@ from utils.setup_logger import setup_logger
 
 
 def main():
+    pass
+
+
+if __name__ == "__main__":
     # Setup logging
     logger = setup_logger()
 
@@ -10,7 +14,4 @@ def main():
     logger.info("Loading configurations...")
     config = load_monitor_config()
     logger.info(f"Found configurations: {config}.")
-
-
-if __name__ == "__main__":
     main()

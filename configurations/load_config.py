@@ -1,4 +1,4 @@
-from .config_classes import MonitorConfiguration
+from models.config_classes import MonitorConfiguration
 import yaml
 import logging
 
