@@ -11,9 +11,14 @@ class Location:
     lon: float
 
 
+@dataclass
+class APIFetcherConfiguration:
+    locations: List[Location]
+    api_key: str
+
+
 @dataclass(frozen=True)
 class MonitorConfiguration:
-    locations: List[Location]
     high_temp: float
     low_temp: float
     checking_frequency: int
