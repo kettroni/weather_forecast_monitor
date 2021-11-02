@@ -3,9 +3,9 @@ from logging.handlers import TimedRotatingFileHandler
 
 
 def setup_logger(
-    log_path: str = "./logs/monitor.log",
+    log_path: str,
     msg_format: str = "[%(asctime)s][%(levelname)s] - %(message)s",
-    ch: bool = True,
+    console_handler: bool = True,
 ) -> logging.Logger:
 
     logging.basicConfig(
@@ -18,10 +18,9 @@ def setup_logger(
     logger = logging.getLogger(__name__)
 
     # Add console handler
-    if ch:
+    if console_handler:
         console_handler = logging.StreamHandler()
         console_handler.setFormatter(logging.Formatter(msg_format))
         logger.addHandler(console_handler)
 
-    print(logger)
     return logger
