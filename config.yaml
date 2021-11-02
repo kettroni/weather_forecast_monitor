@@ -1,12 +1,16 @@
+# APIfetchingconfiguration
 # Locations as list of lists.
 locations:
 # - [lat, lon]
 - [60.192059, 24.945831] # e.g. Helsinki's latitude, longitude
 - [1.42, 4.2302]
 
+api_key: <secret_key>
+
+# Monitorconfiguration
 # Give the temperature limits
 high_temp: 10
 low_temp: -3
 
-# Give the checking frequency for the monitoring
-checking_frequency: 300
+# Give the checking frequency for the monitoring (in seconds) in ints
+checking_frequency: 5
