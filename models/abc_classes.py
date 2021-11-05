@@ -1,5 +1,6 @@
 import asyncio
 from abc import ABC, abstractmethod
+from typing import List
 from models.weather_data import WeatherData
 from models.forecast_data import ForecastData
 from models.config_classes import MonitorConfiguration
@@ -7,7 +8,7 @@ from models.config_classes import MonitorConfiguration
 
 class APIFetcher(ABC):
     @abstractmethod
-    def get_weather_data(self) -> WeatherData:
+    def get_weather_data(self) -> List[WeatherData]:
         pass
 
 

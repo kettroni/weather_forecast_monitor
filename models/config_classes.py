@@ -3,12 +3,7 @@ This contains the data class definitions for configuration.
 """
 from pydantic.dataclasses import dataclass
 from typing import List
-
-
-@dataclass(frozen=True)
-class Location:
-    lat: float
-    lon: float
+from models.location import Location
 
 
 @dataclass
