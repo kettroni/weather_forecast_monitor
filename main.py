@@ -10,8 +10,10 @@ def main():
     logger = setup_logger(log_path="./logs/monitor.log")
 
     # Load configurations
-    monitor_config = load_monitor_config("./config.yaml")
-    api_fetcing_config = load_api_fetcher_config("./config.yaml")
+    config_path = "/home/roni/.config/weather_forecast_monitor/config.yaml"
+
+    monitor_config = load_monitor_config(config_path)
+    api_fetcing_config = load_api_fetcher_config(config_path)
 
     # Create an instance of APIFetcher
     api_fetcher = OpenweatherFetcher(api_fetcing_config)
