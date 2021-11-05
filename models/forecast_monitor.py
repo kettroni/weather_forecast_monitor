@@ -8,8 +8,6 @@ from models.forecast_data import ForecastData
 from models.weather_data import WeatherData
 
 
-
-
 class ForecastMonitor(Monitor):
     def __init__(
         self,
@@ -34,7 +32,6 @@ class ForecastMonitor(Monitor):
         except Exception as err:
             self.logger.exception(f"Unexpected error faced:")
             self.logger.exception(err)
-
 
     async def _monitor_loop(self):
         self.logger.info("Fetching WeatherData")

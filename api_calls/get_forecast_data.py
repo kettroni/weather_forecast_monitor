@@ -1,2 +1,4 @@
-def get_forecast_data(apikey: str, ):
+def get_forecast_data(
+    apikey: str,
+):
     pass

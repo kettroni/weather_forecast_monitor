@@ -19,7 +19,6 @@ class APISender(ABC):
 
 
 class Monitor(ABC):
-
     @abstractmethod
     def run(self):
         pass

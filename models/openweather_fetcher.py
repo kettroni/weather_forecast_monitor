@@ -25,7 +25,9 @@ class OpenweatherFetcher(APIFetcher):
 
         return results
 
-    async def get_one_weather_data(self, session: aiohttp.ClientSession, url: str) -> WeatherData:
+    async def get_one_weather_data(
+        self, session: aiohttp.ClientSession, url: str
+    ) -> WeatherData:
         async with session.get(url) as res:
             weather_data = await res.json()
             return weather_data
