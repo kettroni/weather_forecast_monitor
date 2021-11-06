@@ -1,2 +1,72 @@
 * Weather Forecast Monitor
+Inspired by [[./docs/task.pdf][this exercise]] (read it).
 
+This is a weather monitoring application that loops the following procedure:
+1. fetches weather data from an API for the next 5 days,
+2. checks if the given temperature limits are exceeded in the given locations,
+3. logs the results of these checks,
+4. sends the results of these checks to our own [[./api_server][API server]] which saves
+   them to a database. (Results can be retrieved later via the same API server).
+
+These loops are fired asynchronically every given frequency defined in the [[./config.yaml][config.yaml]].
+
+* Table of contents
+:PROPERTIES:
+:TOC:      :include all :depth 2 :ignore (this)
+:END:
+:CONTENTS:
+- [[#weather-forecast-monitor][Weather Forecast Monitor]]
+- [[#usage][Usage]]
+- [[#installation-guide][Installation guide]]
+:END:
+
+* Usage
+** Preconditions
+1. Install virtual environment for [[./api_server][API Server]].
+2. Install virtual environment for the monitor itself (this READMEs installation guide).
+3. Get a personal API key for OpenWeatherMap (by [[https://home.openweathermap.org/users/sign_up][creating a free account]]).
+
+** Steps
+1. Start a local API server on another terminal by following instructions from [[./api_server/README.org#Usage][API server usage]].
+2. Configure the [[./config.yaml][config.yaml]] with needed parameters. Here you will need to add at least the API key for OpenWeatherMap.
+3. Activate the virtual environment for the monitor.
+4. Now you can run the monitor with:
+   #+begin_src shell
+   python main.py
+   #+end_src
+
+   And you can stop the monitoring at any time by KeyboardInterrupt (Ctrl+C usually).
+
+5. Log files are saved in [[./logs/][./logs/]].
+
+
+* Installation guide
+*Disclaimer: this installation is tested with Linux, steps might be different for different distributions.*
+** Requirements
+- Python 3.7.5 (might work with other versions too, this one is tested)
+
+This also guide assumes that:
+- you have opened a shell within this folder,
+- your Python installation is called "python".
+
+** 1. Create a virtual environment (venv) named ".venv" with python
+#+begin_src shell
+python -m venv .venv
+#+end_src
+
+** 2. Activate the virtual environment
+#+begin_src shell
+source .venv/bin/activate
+#+end_src
+
+** 3. Install the dependencies with pip and requirements.txt
+Now you can easily get all the needed libraries for your python virtual environment:
+#+begin_src shell
+pip install -r requirements.txt
+#+end_src
+
+* TODO
+- UNIT TESTS!
+- Better exception handling.
+- Better folder structure, all modules are in the "models" folder, even if they really do not belong there.
+- Probably could use better documentation.

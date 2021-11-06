@@ -3,14 +3,16 @@ from utils.setup_logger import setup_logger
 from models.openweather_fetcher import OpenweatherFetcher
 from models.our_api_sender import OurApiSender
 from models.forecast_monitor import ForecastMonitor
+from datetime import datetime
 
 
 def main():
     # Setup logging
-    logger = setup_logger(log_path="./logs/monitor.log")
+    start_time = datetime.now().strftime("%d-%m-%y_%H:%M:%S")
+    logger = setup_logger(log_path=f"./logs/{start_time}.log")
 
     # Load configurations
-    config_path = "/home/roni/.config/weather_forecast_monitor/config.yaml"
+    config_path = "./config.yaml"
     monitor_config = load_monitor_config(config_path)
     api_fetcing_config = load_api_fetcher_config(config_path)
 

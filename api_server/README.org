@@ -53,6 +53,7 @@ Now you have succesfully installed the API's requirements for your virtual envri
 Make sure you have activated your virtual environment before starting up the server!
 
 * Usage
+Remember to actiave the virtual environment before running this!
 Start the API server:
 #+begin_src shell
 python flaskapi.py

@@ -29,7 +29,7 @@ class OpenweatherFetcher(APIFetcher):
             )
         except StatusNot200Error as err:
             raise APIFetcherError(
-                f"APIFetcher faced a StatusNot200Error: 'Response with status_code other than 200'"
+                f"APIFetcher faced a StatusNot200Error: 'Response with status_code other than 200', got response {err}"
             )
         except KeyError as err:
             raise APIFetcherError(f"APIFetcher faced a KeyError: '{err}'.")
@@ -42,7 +42,7 @@ class OpenweatherFetcher(APIFetcher):
         async with session.get(url) as res:
             response = await res.json()
             if res.status != 200:
-                raise StatusNot200Error()
+                raise StatusNot200Error(res)
 
             return response
 

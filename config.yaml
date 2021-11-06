@@ -3,18 +3,18 @@ api_key: <your_secret_api_key_here>
 
 
 ##### Monitorconfiguration #####
-# Give the locations to monitor
+# Give the locations to monitor [float]
 locations:
 # - [lat, lon]
 - [60.192059, 24.945831] # e.g. Helsinki's latitude, longitude
 - [1.42, 4.2302] # some random location
 
-# Give the temperature limits (Celsius degrees)
+# Give the temperature limits [float] (Celsius degrees)
 # (these match one to one for locations)
 temp_limits:
 # - [lower_limit, upper_limit]
-- [-3, 10] # e.g. Helsinki's temperature limits
-- [15, 30] # random location's temperature limits.
+- [-3.3, 10.12] # e.g. Helsinki's temperature limits
+- [15.20, 30.95] # random location's temperature limits.
 
 # Give the checking frequency for monitoring [int] (seconds)
 checking_frequency: 50
