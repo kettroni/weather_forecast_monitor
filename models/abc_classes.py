@@ -4,6 +4,7 @@ from typing import List
 from models.weather_data import WeatherData
 from models.forecast_data import ForecastData
 from models.config_classes import MonitorConfiguration
+from models.location import Location
 
 
 class APIFetcher(ABC):
@@ -16,7 +17,6 @@ class APIFetcher(ABC):
         pass
 
 
-
 class APISender(ABC):
     @abstractmethod
     def send_forecast_data(self, data: ForecastData) -> None:
@@ -27,3 +27,11 @@ class Monitor(ABC):
     @abstractmethod
     def run(self):
         pass
+
+
+class APIFetcherError(Exception):
+    pass
+
+
+class APISenderError(Exception):
+    pass

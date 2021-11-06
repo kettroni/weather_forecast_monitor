@@ -11,7 +11,6 @@ def main():
 
     # Load configurations
     config_path = "/home/roni/.config/weather_forecast_monitor/config.yaml"
-
     monitor_config = load_monitor_config(config_path)
     api_fetcing_config = load_api_fetcher_config(config_path)
 
@@ -19,11 +18,10 @@ def main():
     api_fetcher = OpenweatherFetcher(api_fetcing_config)
 
     # Create an instance of APISender
-    api_sender = OurApiSender()
+    api_sender = OurApiSender("http://127.0.0.1:5000/forecasts")
 
     # Initialize the monitor
     monitor = ForecastMonitor(monitor_config, api_fetcher, api_sender, logger)
-
     monitor.run()
 
 

@@ -3,7 +3,7 @@ This contains the data class definitions for configuration.
 """
 from pydantic.dataclasses import dataclass
 from typing import List
-from models.location import Location
+from models.monitor_target import MonitorTarget
 
 
 @dataclass
@@ -13,7 +13,5 @@ class APIFetcherConfiguration:
 
 @dataclass(frozen=True)
 class MonitorConfiguration:
-    high_temp: float
-    low_temp: float
     checking_frequency: int
-    locations: List[Location]
+    monitor_targets: List[MonitorTarget]
