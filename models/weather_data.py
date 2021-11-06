@@ -1,6 +1,16 @@
+from typing import List
 from pydantic.dataclasses import dataclass
 
 
-@dataclass
+@dataclass(frozen=True)
+class WeatherUnit:
+    temp_max: float
+    temp_min: float
+    dt_txt: str
+
+
+@dataclass(frozen=True)
 class WeatherData:
-    pass
+    lat: float
+    lon: float
+    units: List[WeatherUnit]
