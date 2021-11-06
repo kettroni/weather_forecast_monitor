@@ -8,7 +8,6 @@ from models.location import Location
 
 @dataclass
 class APIFetcherConfiguration:
-    locations: List[Location]
     api_key: str
 
 
@@ -17,3 +16,4 @@ class MonitorConfiguration:
     high_temp: float
     low_temp: float
     checking_frequency: int
+    locations: List[Location]

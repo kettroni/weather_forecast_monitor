@@ -8,8 +8,13 @@ from models.config_classes import MonitorConfiguration
 
 class APIFetcher(ABC):
     @abstractmethod
-    def get_weather_data(self) -> List[WeatherData]:
+    def get_weather_data(self) -> WeatherData:
         pass
+
+    @abstractmethod
+    def _create_url(self) -> str:
+        pass
+
 
 
 class APISender(ABC):

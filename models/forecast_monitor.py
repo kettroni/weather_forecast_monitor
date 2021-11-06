@@ -1,6 +1,7 @@
 from logging import Logger
 import time
 import asyncio
+from datetime import datetime
 from typing import List
 from models.config_classes import MonitorConfiguration
 from models.abc_classes import Monitor, APIFetcher, APISender
@@ -20,7 +21,7 @@ class ForecastMonitor(Monitor):
         self.api_fetcher = api_fetcher
         self.api_sender = api_sender
         self.logger = logger
-        self.threads = []
+        self.locations = self.monitor_config.locations
 
     def run(self):
         try:
@@ -28,24 +29,27 @@ class ForecastMonitor(Monitor):
                 asyncio.run(self._monitor_loop())
                 time.sleep(self.monitor_config.checking_frequency)
         except KeyboardInterrupt:
-            self.logger("Shutting down the monitor...")
+            self.logger.info("Shutting down the monitor...")
         except Exception as err:
             self.logger.exception(f"Unexpected error faced:")
             self.logger.exception(err)
 
     async def _monitor_loop(self):
-        self.logger.info("Fetching WeatherData")
-        weather_data = await self.api_fetcher.get_weather_data()
-        self.logger.info(f"Found: {weather_data}")
+        for location in self.locations:
+            
+            self.logger.info(f"Fetching WeatherData for location {location}")
+            weather_data = await self.api_fetcher.get_weather_data(location)
+            self.logger.info(f"Found: {location}")
 
-        self.logger.info("Transforming WeatherData -> ForecastData")
-        forecast_data = self._transform(weather_data)
-        self.logger.info(f"Transformed: {forecast_data}")
+            #self.logger.info("Transforming WeatherData -> ForecastData")
+            forecast_data = self._transform(weather_data)
+            #self.logger.info(f"Transformed: {forecast_data}")
 
-        self.logger.info("Sending ForecastData")
-        self.api_sender.send_forecast_data(forecast_data)
+            #self.logger.info("Sending ForecastData")
+            self.api_sender.send_forecast_data(forecast_data)
 
         self.logger.info("Loop finished.")
 
-    def _transform(self, weather_data: List[WeatherData]) -> List[ForecastData]:
+    def _transform(self, weather_data: WeatherData) -> ForecastData:
+        
         return []

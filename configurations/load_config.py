@@ -15,6 +15,7 @@ def load_monitor_config(config_file_path: str) -> MonitorConfiguration:
                 high_temp=configs["high_temp"],
                 low_temp=configs["low_temp"],
                 checking_frequency=configs["checking_frequency"],
+                locations=configs["locations"],
             )
 
             return monitor_config
@@ -35,7 +36,7 @@ def load_api_fetcher_config(config_file_path: str) -> APIFetcherConfiguration:
             # The config["locations"] are automatically
             # casted into Location objects
             api_fetcher_config = APIFetcherConfiguration(
-                locations=configs["locations"], api_key=configs["api_key"]
+                api_key=configs["api_key"]
             )
 
             return api_fetcher_config
