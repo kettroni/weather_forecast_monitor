@@ -1,25 +1,17 @@
+
+* Flask API Server
+
 * Table of contents
 :PROPERTIES:
 :TOC:      :include all :depth 2 :ignore (this)
 :END:
 :CONTENTS:
+- [[#flask-api-server][Flask API Server]]
 - [[#installation-guide][Installation guide]]
-  - [[#requirements][Requirements]]
-  - [[#1-create-a-virtual-environment-venv-named-venv-with-python][1. Create a virtual environment (venv) named ".venv" with python]]
-  - [[#2-activate-the-virtual-environment][2. Activate the virtual environment]]
-  - [[#3-install-the-dependencies-with-pip-and-requirementstxt][3. Install the dependencies with pip and requirements.txt]]
 - [[#usage][Usage]]
 - [[#http-methods-and-routes][HTTP methods and routes]]
-  - [[#get-forecasts][GET /forecasts]]
-  - [[#post-forecasts][POST /forecasts]]
 - [[#example-requests][Example requests]]
 - [[#folder-structure][Folder structure]]
-  - [[#api_server][api_server/]]
-  - [[#controllers][controllers/]]
-  - [[#database][database/]]
-  - [[#models][models/]]
-  - [[#routes][routes/]]
-  - [[#utils][utils/]]
 - [[#improvements-nice-to-have][Improvements (nice to have)]]
 :END:
 
