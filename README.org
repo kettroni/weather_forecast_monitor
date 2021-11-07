@@ -32,9 +32,9 @@ These loops are fired asynchronically every given frequency defined in the [[./c
 2. Configure the [[./config.yaml][config.yaml]] with needed parameters. Here you will need to add at least the API key for OpenWeatherMap.
 3. Activate the virtual environment for the monitor.
 4. Now you can run the monitor with:
-   #+begin_src shell
-   python main.py
-   #+end_src
+#+begin_src shell
+python main.py
+#+end_src
 
    And you can stop the monitoring at any time by KeyboardInterrupt (Ctrl+C usually).
 
