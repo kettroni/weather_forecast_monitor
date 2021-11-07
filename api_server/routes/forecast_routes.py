@@ -2,7 +2,7 @@ from __main__ import api, API_CONFIG
 from controllers.forecast_controller import get_forecasts, insert_forecasts
 from flask import request
 from pydantic.error_wrappers import ValidationError
-from models.forecastdata import ForecastData
+from models.data import ForecastData
 
 
 @api.route("/forecasts", methods=["GET"])

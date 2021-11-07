@@ -2,10 +2,9 @@ from typing import List, Dict
 import aiohttp
 import asyncio
 import requests
-from models.abc_classes import APIFetcher, APIFetcherError
-from models.weather_data import WeatherData, WeatherUnit
+from models.abstracts import APIFetcher, APIFetcherError
+from models.data import WeatherData, WeatherUnit, Location
 from models.config_classes import APIFetcherConfiguration
-from models.location import Location
 
 
 class OpenweatherFetcher(APIFetcher):
@@ -70,4 +69,4 @@ class OpenweatherFetcher(APIFetcher):
 
 
 class StatusNot200Error(Exception):
-    pass
+    pass    

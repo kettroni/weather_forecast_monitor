@@ -1,3 +1,8 @@
+"""
+This is a general implementation of a ForecastMonitor.
+Pass instances of an APIFetcher and an APISender (abstractions are defined in models/abstracts/)
+for this class and it should work.
+"""
 from logging import Logger
 import time
 import asyncio
@@ -5,16 +10,14 @@ from datetime import datetime
 from typing import List
 import aiohttp
 from models.config_classes import MonitorConfiguration
-from models.abc_classes import (
+from models.abstracts import (
     Monitor,
     APIFetcher,
     APISender,
     APIFetcherError,
     APISenderError,
 )
-from models.forecast_data import ForecastData
-from models.weather_data import WeatherData
-from models.monitor_target import MonitorTarget
+from models.data import ForecastData, WeatherData, MonitorData
 
 
 class ForecastMonitor(Monitor):
@@ -57,17 +60,17 @@ class ForecastMonitor(Monitor):
         loop = self.loop
         self.logger.info(f"Loop #{loop} started.")
 
-        for monitor_target in self.monitor_config.monitor_targets:
-            location = monitor_target.location
+        for monitor_data in self.monitor_config.monitor_datas:
+            location = monitor_data.location
 
             self.logger.info(f"[#{loop}] Fetching WeatherData for location {location}")
             weather_data = await self.api_fetcher.get_weather_data(location)
 
             # Handle the fetched WeatherData and get ForecastData
-            forecast_data = self._handle_weather_data(monitor_target, weather_data)
+            forecast_data = self._handle_weather_data(monitor_data, weather_data)
 
             # Log the results (ForecastData)
-            self._result_logging(monitor_target, forecast_data, loop)
+            self._result_logging(monitor_data, forecast_data, loop)
 
             # Update database with api_sender
             status_code = await self.api_sender.send_forecast_data(forecast_data)
@@ -79,32 +82,32 @@ class ForecastMonitor(Monitor):
         self.logger.info(f"Loop #{loop} finished.")
 
     def _handle_weather_data(
-        self, monitor_target: MonitorTarget, weather_data: WeatherData
+        self, monitor_data: MonitorData, weather_data: WeatherData
     ) -> ForecastData:
         temperature_exceeded = False
 
         for unit in weather_data.units:
-            if unit.temp_max > monitor_target.temp_limit.high_temp:
+            if unit.temp_max > monitor_data.temp_limit.high_temp:
                 temperature_exceeded = True
-            if unit.temp_min < monitor_target.temp_limit.low_temp:
+            if unit.temp_min < monitor_data.temp_limit.low_temp:
                 temperature_exceeded = True
 
         forecast_data = ForecastData(
             lat=weather_data.lat,
             lon=weather_data.lon,
-            low_temp=monitor_target.temp_limit.low_temp,
-            high_temp=monitor_target.temp_limit.high_temp,
+            low_temp=monitor_data.temp_limit.low_temp,
+            high_temp=monitor_data.temp_limit.high_temp,
             exceeds_limits=temperature_exceeded,
-            timestamp=datetime.now().strftime("%H:%M:%S %d-%m-%y"),
+            timestamp=datetime.now().strftime("%d-%m-%y_%H:%M:%S"),
         )
 
         return forecast_data
 
     def _result_logging(
-        self, monitor_target: MonitorTarget, forecast_data: ForecastData, loop: int
+        self, monitor_data: MonitorData, forecast_data: ForecastData, loop: int
     ) -> None:
-        temp_limit = monitor_target.temp_limit
-        location = monitor_target.location
+        temp_limit = monitor_data.temp_limit
+        location = monitor_data.location
         if forecast_data.exceeds_limits:
             self.logger.warning(
                 f"[#{loop}] Temperature limits {str(temp_limit)}  EXCEEDED in the next 5 days for {location}."

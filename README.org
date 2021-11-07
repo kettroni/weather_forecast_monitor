@@ -18,6 +18,7 @@ These loops are fired asynchronically every given frequency defined in the [[./c
 - [[#weather-forecast-monitor][Weather Forecast Monitor]]
 - [[#usage][Usage]]
 - [[#installation-guide][Installation guide]]
+- [[#folder-structure][Folder structure]]
 - [[#todos][TODOs]]
 :END:
 
@@ -29,9 +30,14 @@ These loops are fired asynchronically every given frequency defined in the [[./c
 
 ** Steps
 1. Start a local API server on another terminal by following instructions from [[./api_server/README.org#Usage][API server usage]].
-2. Configure the [[./config.yaml][config.yaml]] with needed parameters. Here you will need to add at least the API key for OpenWeatherMap.
-3. Activate the virtual environment for the monitor.
-4. Now you can run the monitor with:
+2. Configure the [[./monitor_config.yaml][monitor_config.yaml]] with needed parameters.
+3. Configure the [[./monitors/open_weather_map_monitor/fetcher_config.yaml]]. Here you will need to add the API key for OpenWeatherMap.
+4. Activate the virtual environment for the monitor.
+#+begin_src shell
+source .venv/bin/activate
+#+end_src
+
+5. Now you can run the monitor with:
 #+begin_src shell
 python main.py
 #+end_src
@@ -66,10 +72,50 @@ Now you can easily get all the needed libraries for your python virtual environm
 pip install -r requirements.txt
 #+end_src
 
+* Folder structure
+** [[./][./api_server/]]
+Root folder for the API server for saving data used in this example. Check out it's [[./api_server/README.org][README]].
+
+** [[./docs/]]
+Includes some documentation I used when starting to develop this app.
+
+
+** [[./main.py][./main.py]]
+This main module can run any ForecastMonitor implementation.
+The default example is using the open_weather_map_monitor implementation.
+
+** [[./models/]]
+Includes general models, that can be used in many different implementations of this app.
+*** [[./models/abstracts/]]
+Abstract classes.
+
+*** [[./models/config_classes/]]
+Configuration classes.
+
+*** [[./models/data/]]
+Dataclasses.
+
+
+** [[./monitor_config.yaml][./monitor_config.yaml]]
+You can configure monitored locations, monitored temperatures and monitoring frequency here.
+
+** [[./monitors/]]
+Includes packages that are different implementations of monitors.
+
+*** [[./monitors/forecast_monitor/]]
+This is an implementation of a Monitor. This has different implementations for its sender and fetcher.
+
+**** [[./monitors/forecast_monitor/open_weather_map_monitor/]]
+This is an implementation of a ForecastMonitor. It has its unique APISender and APIFetcher classes
+that are needed for the ForecastMonitor.
+
+** [[./requirements.txt]]
+Used for initializing a working virtual environment for this example.
+
+** [[./utils/]]
+Utility functions for initializing logging and loading configurations.
+
 * TODOs
 - UNIT TESTS!
 - Better exception handling.
-- Better folder structure, all modules are in the "models" folder, even if they really do not belong there.
-- Could be packaged better overall. Some modules need imports from others and they could use relative
-  imports instead of full import paths like it is done currently.
 - Probably could use better documentation.

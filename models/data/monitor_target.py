@@ -1,9 +1,9 @@
 from pydantic.dataclasses import dataclass
-from models.location import Location
-from models.templimit import TempLimit
+from .location import Location
+from .temp_limit import TempLimit
 
 
 @dataclass
-class MonitorTarget:
+class MonitorData:
     location: Location
     temp_limit: TempLimit

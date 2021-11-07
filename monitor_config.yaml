@@ -1,7 +1,3 @@
-##### APIFetcherconfiguration #####
-api_key: <your_secret_api_key_here>
-
-
 ##### Monitorconfiguration #####
 # Give the locations to monitor [float]
 locations:

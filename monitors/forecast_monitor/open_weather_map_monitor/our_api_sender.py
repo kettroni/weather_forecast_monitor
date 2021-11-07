@@ -2,8 +2,8 @@ from typing import Dict
 import asyncio
 import aiohttp
 from dataclasses import asdict
-from models.abc_classes import APISender, APISenderError
-from models.forecast_data import ForecastData
+from models.abstracts import APISender, APISenderError
+from models.data import ForecastData
 
 
 class OurApiSender(APISender):
