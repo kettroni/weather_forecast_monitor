@@ -73,7 +73,7 @@ pip install -r requirements.txt
 #+end_src
 
 * Folder structure
-** [[./][./api_server/]]
+** [[./api_server/]]
 Root folder for the API server for saving data used in this example. Check out it's [[./api_server/README.org][README]].
 
 ** [[./docs/]]
