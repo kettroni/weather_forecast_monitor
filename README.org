@@ -70,4 +70,6 @@ pip install -r requirements.txt
 - UNIT TESTS!
 - Better exception handling.
 - Better folder structure, all modules are in the "models" folder, even if they really do not belong there.
+- Could be packaged better overall. Some modules need imports from others and they could use relative
+  imports instead of full import paths like it is done currently.
 - Probably could use better documentation.
