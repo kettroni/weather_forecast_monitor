@@ -20,7 +20,7 @@
 *Disclaimer: this installation is tested with Linux, steps might be different for different distributions.*
 ** Requirements
 - Python 3.7.5 (might work with other versions too, this one is tested)
-
+- [[https://www.sqlite.org/download.html][SQLite 3]] installed.
 This also guide assumes that:
 - you have opened a shell within this folder,
 - your Python installation is called "python".
