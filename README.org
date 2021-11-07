@@ -18,6 +18,7 @@ These loops are fired asynchronically every given frequency defined in the [[./c
 - [[#weather-forecast-monitor][Weather Forecast Monitor]]
 - [[#usage][Usage]]
 - [[#installation-guide][Installation guide]]
+- [[#todos][TODOs]]
 :END:
 
 * Usage
@@ -65,7 +66,7 @@ Now you can easily get all the needed libraries for your python virtual environm
 pip install -r requirements.txt
 #+end_src
 
-* TODO
+* TODOs
 - UNIT TESTS!
 - Better exception handling.
 - Better folder structure, all modules are in the "models" folder, even if they really do not belong there.
